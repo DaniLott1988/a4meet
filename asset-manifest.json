@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/a4meet/static/css/main.073c9b0a.css",
+    "main.js": "/a4meet/static/js/main.9743b987.js",
+    "static/js/377.71b939bc.chunk.js": "/a4meet/static/js/377.71b939bc.chunk.js",
+    "service-worker.js": "/a4meet/service-worker.js",
+    "static/media/logo.svg": "/a4meet/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
+    "index.html": "/a4meet/index.html",
+    "main.073c9b0a.css.map": "/a4meet/static/css/main.073c9b0a.css.map",
+    "main.9743b987.js.map": "/a4meet/static/js/main.9743b987.js.map",
+    "377.71b939bc.chunk.js.map": "/a4meet/static/js/377.71b939bc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.9743b987.js"
+  ]
+}
