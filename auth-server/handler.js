@@ -100,6 +100,7 @@ module.exports.getCalendarEvents = async (event) => {
         timeMin: new Date().toISOString(),
         singleEvents: true,
         orderBy: "startTime",
+        maxResults: 32,
       },
       (error, response) => {
         if (error) {
@@ -114,7 +115,9 @@ module.exports.getCalendarEvents = async (event) => {
     return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
       },
       body: JSON.stringify({ events: results.data.items }),
     };
