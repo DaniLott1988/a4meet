@@ -11,3 +11,9 @@
   var locations = [...new Set(extractLocations)];
   return locations;
 };
+
+import { mockData } from './mock-data';
+
+export const getEvents = async () => {
+  return mockData;
+};
