@@ -12,8 +12,8 @@ const credentials = {
   auth_uri: "https://accounts.google.com/o/oauth2/auth",
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  redirect_uris: ["https://KrystinaGerke.github.io/meet", "http://localhost:3000/test-auth-server.html"],
-  javascript_origins: ["https://KrystinaGerke.github.io/", "http://localhost:3000"],
+  redirect_uris: ["https://danilott1988.github.io/a4meet/", "http://localhost:3000/test-auth-server.html"],
+  javascript_origins: ["https://DaniLott1988.github.io", "http://localhost:3000"],
 };
 
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
