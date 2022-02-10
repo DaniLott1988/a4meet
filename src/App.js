@@ -11,7 +11,8 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 32
+    numberOfEvents: 32,
+    currentLocation: "all"
   };
 
   updateEvents = async (location, numberOfEvents) => {
