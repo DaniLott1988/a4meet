@@ -13,10 +13,6 @@ describe('<NumberOfEvents /> component', () => {
       expect(NumberOfEventsWrapper.find('.number')).toHaveLength(1);
   });
 
-  test("render textbox element correctly", () => {
-    expect(NumberOfEventsWrapper.find(".new-number-of-events")).toHaveLength(1);
-  });
-
   test("Change event on textbox", () => {
     expect(NumberOfEventsWrapper);
   });
