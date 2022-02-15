@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/a4meet/static/css/main.3a421768.css",
-    "main.js": "/a4meet/static/js/main.a0a41d1d.js",
+    "main.js": "/a4meet/static/js/main.faa960ed.js",
     "static/js/377.71b939bc.chunk.js": "/a4meet/static/js/377.71b939bc.chunk.js",
     "service-worker.js": "/a4meet/service-worker.js",
     "index.html": "/a4meet/index.html",
     "main.3a421768.css.map": "/a4meet/static/css/main.3a421768.css.map",
-    "main.a0a41d1d.js.map": "/a4meet/static/js/main.a0a41d1d.js.map",
+    "main.faa960ed.js.map": "/a4meet/static/js/main.faa960ed.js.map",
     "377.71b939bc.chunk.js.map": "/a4meet/static/js/377.71b939bc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3a421768.css",
-    "static/js/main.a0a41d1d.js"
+    "static/js/main.faa960ed.js"
   ]
 }
