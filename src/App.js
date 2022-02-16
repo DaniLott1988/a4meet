@@ -99,6 +99,7 @@ class App extends Component {
 
   render() {
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />
+    const { numberOfEvents, locations, events, offlineText } = this.state;
     return (
       <div className='App'>
         <OfflineAlert text={this.state.offlineText} />
