@@ -5,6 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
+import { OfflineAlert } from './Alert';
 import { getEvents, extractLocations, checkToken, getAccessToken } from
 './api';
 
@@ -69,6 +70,15 @@ class App extends Component {
         }
       });
     }
+    if (!navigator.onLine) {
+      this.setState({
+        offlineText: 'Please notice events will not be updated as you are offline.'
+      })
+    } else {
+      this.setState({
+        offlineText: ''
+      })
+    }
   }
 
   getData = () => {
@@ -91,6 +101,7 @@ class App extends Component {
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />
     return (
       <div className='App'>
+        <OfflineAlert text={this.state.offlineText} />
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} />
         <EventList events={this.state.events} />
