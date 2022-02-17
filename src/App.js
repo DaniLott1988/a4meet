@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import './nprogress.css';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
@@ -114,12 +114,10 @@ class App extends Component {
         <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} />
 
         <p>Events in each city</p>
-          <ScatterChart
-            width={400}
-            height={400}
-            margin={{
-              top: 20, right: 20, bottom: 20, left: 20,
-            }} >
+
+          <ResponsiveContainer height={400} >
+            
+            <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }} >
 
               <CartesianGrid />
               
@@ -131,7 +129,9 @@ class App extends Component {
               
               <Scatter data={this.getData()} fill="#8884d8" />
 
-          </ScatterChart>
+            </ScatterChart>
+
+          </ResponsiveContainer>
 
         <EventList events={this.state.events} />
 
