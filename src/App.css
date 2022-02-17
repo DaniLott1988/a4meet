@@ -3,12 +3,12 @@
 body {
   font-family: 'Oswald', sans-serif;
   color: navy;
-  background-color: plum;
+  background-color: lavender;
 }
 
 .App {
   text-align: center;
-  background-color: plum;
+  background-color: lavender;
   padding: 2% 5%;
 }
 

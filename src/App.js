@@ -14,27 +14,36 @@ import { getEvents, extractLocations, checkToken, getAccessToken } from
 
 class App extends Component {
 
-  state = {
-    events: [],
-    locations: [],
-    numberOfEvents: 32,
-    currentLocation: "all",
-    showWelcomeScreen: undefined
-  };
+  constructor(props) {
+    super(props)
 
-  updateEvents = async (location, numberOfEvents) => {
+    this.state = {
+      events: [],
+      locations: [],
+      numberOfEvents: 32,
+      currentLocation: 'all',
+      showWelcomeScreen: undefined,
+       offlineText: ''
+
+    }
+  }
+
+  updateEvents = (location, numberOfEvents) => {
     getEvents().then((events) => {
-      const locationEvents = (location === 'all') ?
-        events :
-        events.filter((event) => event.location === location);
+      const locationEvents =
+        location === "all"
+          ? events
+          : events.filter((event) => event.location === location);
+
+      const eventsToShow = locationEvents.slice(0, numberOfEvents);
       if (this.mounted) {
         this.setState({
-          events: locationEvents.slice(0, this.state.numberOfEvents),
-          currentLocation: location,
+          events: eventsToShow,
+          currentLocation: location
         });
       }
     });
-  }
+  };
 
   updateNumberOfEvents = async (e) => {
     const newNumber = e.target.value ? parseInt(e.target.value) : 32;
