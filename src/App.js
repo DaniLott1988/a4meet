@@ -45,7 +45,7 @@ class App extends Component {
     });
   };
 
-  updateEventNumber = async (event) => {
+  updateNumberOfEvents = async (event) => {
     const eventCount = event.target.value ? parseInt(event.target.value) : 32;
     await this.setState({ numberOfEvents: eventCount });
     this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
@@ -112,7 +112,7 @@ class App extends Component {
 
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
 
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} />
+        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={(event) => this.updateNumberOfEvents(event)} />
 
         <p>Events in each city</p>
 
