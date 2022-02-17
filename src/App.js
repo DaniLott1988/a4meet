@@ -45,20 +45,11 @@ class App extends Component {
     });
   };
 
-  updateNumberOfEvents = async (e) => {
-    const newNumber = e.target.value ? parseInt(e.target.value) : 32;
-    if (newNumber < 1 || newNumber > 32) {
-      this.setState({
-        numberOfEvents: '32',
-      });
-    } else {
-      this.setState({
-        errorText: "",
-        numberOfEvents: newNumber,
-      });
-      this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
-    }
-  };
+  updateEventNumber = async (event) => {
+    const eventCount = event.target.value ? parseInt(event.target.value) : 32;
+    await this.setState({ numberOfEvents: eventCount });
+    this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
+  }
 
   async componentDidMount() {
     const { numberOfEvents } = this.state;
