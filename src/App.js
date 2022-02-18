@@ -28,48 +28,55 @@ class App extends Component {
     }
   }
 
-  updateEvents = (location, numberOfEvents) => {
+  updateEvents = (location, eventCount = this.state.numberOfEvents) => {
+    this.setState({ isOnline: navigator.onLine ? true: false });
     getEvents().then((events) => {
       const locationEvents =
         location === "all"
           ? events
           : events.filter((event) => event.location === location);
 
-      const eventsToShow = locationEvents.slice(0, numberOfEvents);
       if (this.mounted) {
         this.setState({
-          events: eventsToShow,
+          events: locationEvents.slice(0, eventCount),
+          location: location,
           currentLocation: location
         });
       }
     });
   };
 
-  updateNumberOfEvents = (newNumberOfEvents) => {
-    this.setState({
-      numberOfEvents: newNumberOfEvents
+  updateNumberOfEvents = async (e) => {
+    const newNumber = e.target.value ? parseInt(e.target.value) : 32;
+
+    if(newNumber < 1 || newNumber > 32){
+      await this.setState({ 
+        numberOfEvents: newNumber,
+      errorText: 'Please enter a number between 1 and 32.' 
     });
-    this.updateEvents(this.state.activeLocation);
-  }
+    } else {
+      await this.setState({
+        errorText:'',
+        numberOfEvents: newNumber
+      });
+      this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
+    } 
+  };
 
   async componentDidMount() {
+    this.mounted = true;
     const { numberOfEvents } = this.state;
     const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
-    this.mounted = true;
-    getEvents().then((events) => {
-      this.setState({
-        events: events.slice(0, numberOfEvents),
-        locations: extractLocations(events)
-      });
-    });
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
-          this.setState({ events, locations: extractLocations(events) });
+          this.setState({ 
+            events: events.slice(0, this.state.numberOfEvents),
+          locations: extractLocations(events) });
         }
       });
     }
@@ -113,7 +120,7 @@ class App extends Component {
 
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
 
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={(event) => this.updateNumberOfEvents(event)} />
+        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={(event) => this.updateNumberOfEvents(event)} errorText ={this.state.errorText} />
 
         <p>Events in each city</p>
 
