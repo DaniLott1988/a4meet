@@ -45,10 +45,11 @@ class App extends Component {
     });
   };
 
-  updateNumberOfEvents = async (event) => {
-    const eventCount = event.target.value ? parseInt(event.target.value) : 32;
-    await this.setState({ numberOfEvents: eventCount });
-    this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
+  updateNumberOfEvents = (newNumberOfEvents) => {
+    this.setState({
+      numberOfEvents: newNumberOfEvents
+    });
+    this.updateEvents(this.state.activeLocation);
   }
 
   async componentDidMount() {
@@ -116,8 +117,10 @@ class App extends Component {
 
         <p>Events in each city</p>
 
-          <EventGenre events={events} />
+        <div className="data-vis-wrapper">
 
+          <EventGenre events={events} />
+        
           <ResponsiveContainer height={400} >
             <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }} >
               <CartesianGrid />
@@ -127,6 +130,8 @@ class App extends Component {
               <Scatter data={this.getData()} fill="#8884d8" />
             </ScatterChart>
           </ResponsiveContainer>
+
+        </div>
 
         <EventList events={this.state.events} />
 
